@@ -3,6 +3,7 @@ import React from 'react';
 import SimpleExample from './simple';
 import EventsExample from './events';
 import VectorLayersExample from './vector-layers';
+import FeatureGroupsExample from './feature-groups';
 
 const examples = <div>
   <h1>React-Leaflet examples</h1>
@@ -13,6 +14,8 @@ const examples = <div>
   <EventsExample />
   <h2>Vector layers</h2>
   <VectorLayersExample />
+  <h2>FeatureGroup Example</h2>
+  <FeatureGroupsExample />
 </div>;
 
 React.render(examples, document.getElementById('app'));
