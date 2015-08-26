@@ -19,6 +19,10 @@ var _vectorLayers = require('./vector-layers');
 
 var _vectorLayers2 = _interopRequireDefault(_vectorLayers);
 
+var _featureGroups = require('./feature-groups');
+
+var _featureGroups2 = _interopRequireDefault(_featureGroups);
+
 var examples = _react2['default'].createElement(
   'div',
   null,
@@ -49,12 +53,18 @@ var examples = _react2['default'].createElement(
     null,
     'Vector layers'
   ),
-  _react2['default'].createElement(_vectorLayers2['default'], null)
+  _react2['default'].createElement(_vectorLayers2['default'], null),
+  _react2['default'].createElement(
+    'h2',
+    null,
+    'FeatureGroup Example'
+  ),
+  _react2['default'].createElement(_featureGroups2['default'], null)
 );
 
 _react2['default'].render(examples, document.getElementById('app'));
 
-},{"./events":2,"./simple":3,"./vector-layers":4,"react":"react"}],2:[function(require,module,exports){
+},{"./events":2,"./feature-groups":3,"./simple":4,"./vector-layers":5,"react":"react"}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -169,6 +179,75 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactLeaflet = require('react-leaflet');
 
+var FeatureGroupsExample = (function (_Component) {
+  _inherits(FeatureGroupsExample, _Component);
+
+  function FeatureGroupsExample() {
+    _classCallCheck(this, FeatureGroupsExample);
+
+    _get(Object.getPrototypeOf(FeatureGroupsExample.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(FeatureGroupsExample, [{
+    key: 'render',
+    value: function render() {
+      var center = [51.505, -0.09];
+
+      var polyline = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
+
+      return _react2['default'].createElement(
+        _reactLeaflet.Map,
+        { center: center, zoom: 13 },
+        _react2['default'].createElement(_reactLeaflet.TileLayer, {
+          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }),
+        _react2['default'].createElement(_reactLeaflet.FeatureGroup, { layers: [_react2['default'].createElement(_reactLeaflet.Circle, { center: center, radius: 200, fillColor: 'blue' }), _react2['default'].createElement(
+            _reactLeaflet.CircleMarker,
+            { center: [51.51, -0.12], radius: 20, color: 'red' },
+            _react2['default'].createElement(
+              _reactLeaflet.Popup,
+              null,
+              _react2['default'].createElement(
+                'span',
+                null,
+                'Popup in CircleMarker'
+              )
+            )
+          ), _react2['default'].createElement(_reactLeaflet.Polyline, { positions: polyline, color: 'lime' })] })
+      );
+    }
+  }]);
+
+  return FeatureGroupsExample;
+})(_react.Component);
+
+exports['default'] = FeatureGroupsExample;
+module.exports = exports['default'];
+
+},{"react":"react","react-leaflet":"react-leaflet"}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLeaflet = require('react-leaflet');
+
 var SimpleExample = (function (_Component) {
   _inherits(SimpleExample, _Component);
 
@@ -219,7 +298,7 @@ var SimpleExample = (function (_Component) {
 exports['default'] = SimpleExample;
 module.exports = exports['default'];
 
-},{"react":"react","react-leaflet":"react-leaflet"}],4:[function(require,module,exports){
+},{"react":"react","react-leaflet":"react-leaflet"}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
